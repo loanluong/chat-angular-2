@@ -1,0 +1,16 @@
+<header>
+</header>
+<div>
+    <section class="side-nav">
+        <h2>Bloc Chat</h2>
+        <button>New Room</button>
+        <ul>
+            <li *ngFor="let room of rooms | async">
+                <p>{{room.name}}</p>
+            </li>
+        </ul>
+    </section>
+</div>
+<div>
+</div>
+
