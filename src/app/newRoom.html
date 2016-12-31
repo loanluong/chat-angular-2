@@ -1,0 +1,19 @@
+<template #newRoomTemplate let-c="close" let-d="dismiss">
+<div class="modal-header">
+      <h2 class="modal-title">Create new room</h2>
+    </div>
+    <div class="modal-body">
+        <form>
+            <p>Enter a room name</p>
+            <input type="text" [(ngModel)]="roomName" name="name"/>
+        </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="d('cancelRoom')">Cancel</button>
+      <button type="button" class="btn btn-secondary" (click)="c('createRoom')">Create Room</button>
+    </div>
+</template>
+
+<button (click)="onClick()">New Room</button>
+        
+        

@@ -1,16 +1,32 @@
 <header>
 </header>
-<div>
+
     <section class="side-nav">
         <h2>Bloc Chat</h2>
-        <button>New Room</button>
+        <button (click)="newRoomModal()">New Room</button>
         <ul>
             <li *ngFor="let room of rooms | async">
-                <p>{{room.name}}</p>
+                <p>{{room.$value}}</p>
             </li>
         </ul>
     </section>
-</div>
-<div>
+
+    
+
+
+<div *ngIf="show" class="new-room-modal">
+    <div class="modal-header">
+      <h2 class="modal-title">Create new room</h2>
+    </div>
+    <div class="modal-body">
+        <form>
+            <p>Enter a room name</p>
+            <input type="text" [(ngModel)]="roomName" name="name"/>
+        </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="cancelRoom()">Cancel</button>
+      <button type="button" class="btn btn-secondary" (click)="createRoom()">Create Room</button>
+    </div>
 </div>
 

@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 
+
+
 export const firebaseConfig = {
     apiKey: "AIzaSyCkbAzDto7TIN-m0q4W8_M2VYhmoX-bCVQ",
     authDomain: "chat-b0a56.firebaseapp.com",
@@ -27,7 +29,7 @@ export const myFirebaseAuthConfig = {
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig)
   ],
-  //providers: [],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
