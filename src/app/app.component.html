@@ -5,13 +5,23 @@
         <h2>Bloc Chat</h2>
         <button (click)="newRoomModal()">New Room</button>
         <ul>
-            <li *ngFor="let room of rooms | async">
+            <li *ngFor="let room of rooms | async" (click)="setRoomId($event, room.$key)">
                 <p>{{room.$value}}</p>
             </li>
         </ul>
     </section>
 
-    
+    <section *ngIf="currentRoomId !== ''" class="message-room">
+        <h2>Messages</h2>
+            <ul class="messages">
+            <li *ngFor="let message of messages | async"  class="messages">
+                <template [ngIf]="currentRoomId === message.roomId">
+                <span>{{message.username}} {{message.sentAt}}</span>
+                <span>{{message.content}}</span>
+                </template>    
+            </li>
+        </ul>
+    </section>
 
 
 <div *ngIf="show" class="new-room-modal">
