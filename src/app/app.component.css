@@ -1,27 +1,81 @@
+section.login-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0px;
+    height: 75px;
+    width: 100%;
+    background-color: #607D8B;
+    }
+
+#login {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    height: 55px;
+    width: 85px;
+    border-radius: 5px;
+    background-color: #F1F1F1;
+    display: inline-block;
+}
+
+h1 {
+    position: absolute;
+    right: 10px;
+    display: inline-block;
+    color: #F1F1F1;
+}
+
+
 section.side-nav {
-    display: block; 
+    position: fixed;
+    top: 75px;
     height: 100%;
     width: 200px;
-    position: fixed;
+    margin: 0px;
+    padding-top: 0px;
     z-index: 1;
-    background-color: #f1f1f1; 
+    background-color: #F1F1F1;
+    color: #607D8B;
 }
 
 section.message-room {
     position: relative;
+    top: 75px;
     left: 200px;
     margin-left: 20px;
 
 }
 
-div.new-room-modal {
-    width: 25%;
-    position: relative;
-    margin-left: 33%;
-    border: 5px;
+
+
+div.user-modal {
+    width: 400px;
+    height: 300px;
+    position: absolute;
+    top: 350px;
+    left: 400px;
+    border: 3px;
     border-style: solid;
+    border-color: #8E8E8E;
+    background-color: #F4F4F4;
 }
 
 ul {
     list-style-type: none;
+}
+
+li.messages {
+    height: 75px;
+}
+div.message-input{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    height: 25px;
+}
+
+input.text-box {
+    height: 25px;
+    width: 80%;
 }

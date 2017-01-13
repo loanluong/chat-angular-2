@@ -1,8 +1,17 @@
-<header>
-</header>
+<header></header>
+<section class="login-bar">
+    <template [ngIf]="currentUser === ''">
+    <button id="login" (click)="login()">LOGIN</button>
+    <h1>Login to get started</h1>
+    </template>    
+    <template [ngIf]="currentUser !== ''">
+    <button id="login" (click)="logout()">LOGOUT</button>   
+    <h1>Signed in as {{currentUser}}</h1>
+    </template>    
+</section>
 
-    <section class="side-nav">
-        <h2>Bloc Chat</h2>
+    <section *ngIf="currentUser !== ''" class="side-nav">
+        <h2>Chat Rooms</h2>
         <button (click)="newRoomModal()">New Room</button>
         <ul>
             <li *ngFor="let room of rooms | async" (click)="setRoomId($event, room.$key)">
@@ -11,20 +20,40 @@
         </ul>
     </section>
 
-    <section *ngIf="currentRoomId !== ''" class="message-room">
-        <h2>Messages</h2>
-            <ul class="messages">
+    <section *ngIf="currentRoomId !== ''" class="message-room" >
+        <h2>chatroom name</h2>
+        <ul class="messages">
             <li *ngFor="let message of messages | async"  class="messages">
                 <template [ngIf]="currentRoomId === message.roomId">
-                <span>{{message.username}} {{message.sentAt}}</span>
-                <span>{{message.content}}</span>
+                    <span class="message-username">{{message.username}}</span>
+                    <span class= "message-content">{{message.content}}</span>
+                    <span class="message-sent-at"> {{message.sentAt | date}}</span>
                 </template>    
             </li>
         </ul>
+        <div class="message-input">
+            <input class="text-box" type = "text" (keyup)="newMessage($event)" placeholder="Write your message here">
+            <button class="sendButton" (click)="sendMessage($event)">send</button>
+        </div>
     </section>
 
 
-<div *ngIf="show" class="new-room-modal">
+<div *ngIf="showLogin" class="user-modal">
+    <div class="modal-header">
+      <h2 class="modal-title">Set a username</h2>
+    </div>
+    <div class="modal-body">
+        <form>
+            <p>This name will appear when you send messages</p>
+            <input type="text" [(ngModel)]="currentUser" placeholder="User name" name="name"/>
+        </form>           
+  <button (click)="setUserName($event, $userName)">Set username</button>
+         </div>
+</div>
+
+
+
+<div  *ngIf="show" class="user-modal">
     <div class="modal-header">
       <h2 class="modal-title">Create new room</h2>
     </div>
@@ -39,4 +68,5 @@
       <button type="button" class="btn btn-secondary" (click)="createRoom()">Create Room</button>
     </div>
 </div>
+
 
