@@ -17,7 +17,7 @@ export const firebaseConfig = {
 
 export const myFirebaseAuthConfig = {
     provider: AuthProviders.Google,
-    method: AuthMethods.Redirect
+    method: AuthMethods.Popup
 }
 
 
@@ -27,9 +27,8 @@ export const myFirebaseAuthConfig = {
     BrowserModule,
     FormsModule,
     HttpModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig)
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,8 +1,13 @@
-<header>
-</header>
+<header></header>
+<section class="login-bar"> 
+    <button  *ngIf="!auth" id="login" (click)="login()">Use My Google Account</button>
+    <button   *ngIf="!auth" id="login" (click)="loginfb()">Use My Facebook Account</button>
+    <button *ngIf="auth" id="login" (click)="setUserName()">Set User Name</button>
+    <button id="login" (click)="logout()">LOGOUT</button>       
+</section>
 
-    <section class="side-nav">
-        <h2>Bloc Chat</h2>
+    <section *ngIf="currentUser !== ''" class="side-nav">
+        <h2>Chat Rooms</h2>
         <button (click)="newRoomModal()">New Room</button>
         <ul>
             <li *ngFor="let room of rooms | async" (click)="setRoomId($event, room.$key)">
@@ -11,32 +16,56 @@
         </ul>
     </section>
 
-    <section *ngIf="currentRoomId !== ''" class="message-room">
-        <h2>Messages</h2>
-            <ul class="messages">
-            <li *ngFor="let message of messages | async"  class="messages">
+    <section *ngIf="currentRoomId !== '' && currentUser !== ''" class="message-room" >
+        <h2>chatroom name</h2>
+        
+            <tr *ngFor="let message of messages | async; let even = even; let odd = odd " [ngClass]="{ odd: odd, even: even }">
                 <template [ngIf]="currentRoomId === message.roomId">
-                <span>{{message.username}} {{message.sentAt}}</span>
-                <span>{{message.content}}</span>
+                    <td>
+                    <span class="message-username">{{message.username}}</span>
+                    <span class= "message-content">{{message.content}}</span>
+                    <span class="message-sent-at"> {{message.sentAt | date}}</span>
+                    </td>    
                 </template>    
-            </li>
-        </ul>
+            </tr>
+        
+        <div class="message-input">
+            <input class="text-box" type="text" #messageContent (keyup.enter)="newMessage(messageContent.value); messageContent.value=''"  placeholder="Write your message here">
+            <button class="send-button" (click)="newMessage(messageContent.value); messageContent.value=''">SEND</button>
+        </div>
     </section>
 
 
-<div *ngIf="show" class="new-room-modal">
+<div *ngIf="showLogin" class="user-modal">
+    <div class="modal-header">
+      <h2 class="modal-title">Login</h2>
+    </div>
+    <div class="modal-body">
+        <form>
+            <p>Enter a user name</p>
+            <input class="modal-input" type="text" [(ngModel)]="currentUser" placeholder="username" name="email" required>
+        </form>   
+    <div class = "modal-footer">
+  <button (click)="setUserName($event, $userName)">Set username</button>
+    </div>     
+        </div>
+</div>
+
+
+
+<div  *ngIf="show" class="user-modal">
     <div class="modal-header">
       <h2 class="modal-title">Create new room</h2>
     </div>
     <div class="modal-body">
         <form>
             <p>Enter a room name</p>
-            <input type="text" [(ngModel)]="roomName" name="name"/>
+            <input class="modal-input" type="text" [(ngModel)]="roomName" name="name"/>
         </form>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" (click)="cancelRoom()">Cancel</button>
-      <button type="button" class="btn btn-secondary" (click)="createRoom()">Create Room</button>
+      <button type="button" class="btn btn-secondary" (click)="createRoom($key)">Create Room</button>
     </div>
 </div>
 

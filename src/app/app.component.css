@@ -1,27 +1,141 @@
-section.side-nav {
-    display: block; 
-    height: 100%;
-    width: 200px;
+section.login-bar {
     position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0px;
+    height: 75px;
+    width: 100%;
+    background-color: #607D8B;
+    color: #F1F1F1;
     z-index: 1;
-    background-color: #f1f1f1; 
+    }
+
+#login {
+    margin-top: 25px;
+    background-color: #808080;
+    display: inline-block;
+}
+
+h1 {
+    position: absolute;
+    right: 10px;
+    display: inline-block;
+    color: #F1F1F1;
+}
+
+
+section.side-nav {
+    position: fixed;
+    top: 75px;
+    height: 100%;
+    width: 25%;
+    margin: 0px;
+    padding-top: 0px;
+    z-index: 1;
+    background-color: #F1F1F1;
+    color: #607D8B;
 }
 
 section.message-room {
-    position: relative;
-    left: 200px;
-    margin-left: 20px;
+    position: absolute;
+    top: 75px;
+    right: 0;
+    bottom: 40;
+    left: 25%;
+    width: 75%;
+    margin-left: 0px;
+    border: 3px;
 
 }
 
-div.new-room-modal {
-    width: 25%;
-    position: relative;
-    margin-left: 33%;
-    border: 5px;
+
+span.message-username {
+    font-weight: 400;
+    text-align: center;
+    border: 3px;
+}
+
+span.message-content {
+    font-weight: 200;
+    text-align: left;
+    padding-left: 20px;
+    border: 3px
+}
+
+span.message-date {
+    font-weight: 300;
+    text-align: right;
+    border: 3px;
+}
+
+div.user-modal {
+    width: 400px;
+    height: 300px;
+    position: absolute;
+    top: 350px;
+    left: 400px;
+    border: 3px;
     border-style: solid;
+    border-color: #8E8E8E;
+    background-color: #F4F4F4;
 }
 
+.modal-header {
+    background-color: #607D8B;
+    color: #F1F1F1;
+}
+
+.modal-body {
+    background-color: #F1F1F1;
+    color: #607D8B;
+}
+
+.modal-input {
+    width: 100%;
+    height: 20px;
+}
 ul {
     list-style-type: none;
+}
+
+tr {
+    height: 75px;
+    width: inherit;
+} 
+section.message-room tr.even {
+    height: 75px;
+    background-color: #BBFFFF;
+    margin: 0;
+    border: 10px;
+}
+
+section.message-room tr.odd {
+    height: 75px;
+    width: 75%;
+    margin: 0;
+}
+
+.message-input{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 75%;
+    height: 50px;
+}
+
+.text-box {
+    display: inline-block;
+    width: 80%;
+    height: 40px;
+    margin: 0;
+}
+
+.send-button {
+    position: absolute;
+    right: 0;
+    display: inline-block;
+    width: 20%;
+    height: 40px;
+    margin: 0;
+    z-index: -1;
 }
